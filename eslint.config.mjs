@@ -36,6 +36,11 @@ export default [
       }],
       '@stylistic/semi': ['error', 'always'],
       '@stylistic/space-before-function-paren': ['error', 'always'],
+      '@stylistic/padding-line-between-statements': ['error', {
+        blankLine: 'always',
+        prev: '*',
+        next: 'return',
+      }],
 
       // ESLint rules
       'no-console': ['error', {
