@@ -1,6 +1,6 @@
 {
   "name": "@jhwelch/mmm-eslint-config",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "An ESLint config designed for Magic Mirror Modules",
   "main": "eslint.config.mjs",
   "scripts": {
