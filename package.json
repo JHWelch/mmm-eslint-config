@@ -1,0 +1,31 @@
+{
+  "name": "@jhwelch/mmm-eslint-config",
+  "version": "0.0.1",
+  "description": "An ESLint config designed for Magic Mirror Modules",
+  "main": "eslint.config.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint",
+    "fix": "npm run lint -- --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/JHWelch/mmm-eslint-config.git"
+  },
+  "author": "Jordan Welch",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JHWelch/mmm-eslint-config/issues"
+  },
+  "homepage": "https://github.com/JHWelch/mmm-eslint-config#readme",
+  "dependencies": {
+    "@eslint/js": "^9.15.0",
+    "@stylistic/eslint-plugin-js": "^2.10.1"
+  },
+  "peerDependencies": {
+    "eslint": ">= 9"
+  },
+  "devDependencies": {
+    "eslint": "9.14.0"
+  }
+}

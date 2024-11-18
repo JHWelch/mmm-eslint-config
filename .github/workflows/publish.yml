@@ -1,0 +1,65 @@
+name: Publish to NPM
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_type:
+        type: choice
+        description: Type of Release
+        options:
+          - patch
+          - minor
+          - major
+
+jobs:
+  publish-to-npm:
+    name: 'Bump Version: ${{ github.event.inputs.release_type }}'
+    runs-on: ubuntu-latest
+    environment: npm
+    env:
+      GH_TOKEN: ${{ secrets.GH_RELEASE_PAT }}
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Install Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+        registry-url: 'https://registry.npmjs.org'
+
+    - id: bump-version
+      name: Bump version
+      run: |
+        git config --global user.name ${{ github.actor }}
+        git config --global user.email ${{ github.actor }}@users.noreply.github.com
+        version=$(npm --tag-version-prefix="" version ${{ github.event.inputs.release_type }})
+        echo "version=$version" >> $GITHUB_ENV
+
+    - name: Push changes to main
+      uses: CasperWA/push-protected@v2
+      with:
+        token: ${{ secrets.GH_RELEASE_PAT }}
+        branch: main
+        tags: true
+        unprotect_reviews: true
+
+    - name: Create Dist
+      run: |
+        mkdir dist
+        cp eslint.config.mjs dist
+        cp package.json dist
+        cp README.md dist
+
+    - run: npm publish
+      working-directory: dist
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+
+    - name: Create Release artifact
+      run: |
+        zip -r release.zip dist
+
+    - name: Create GitHub release
+      run: gh release create ${{ env.version }} --title "Store Release ${{ env.version }}" --generate-notes release.zip

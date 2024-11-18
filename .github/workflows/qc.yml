@@ -1,0 +1,33 @@
+name: Quality Check PR
+on:
+  pull_request:
+    types:
+    - opened
+    - synchronize
+    - reopened
+    branches:
+    - main
+  push:
+    branches:
+      - 'push-action/**'
+
+concurrency:
+  group: qc-app-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Install Node.js
+      uses: actions/setup-node@v4
+
+    - name: Install Dependencies
+      run: npm install
+
+    - name: Run Lint
+      run: npm run lint
