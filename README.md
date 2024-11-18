@@ -1,4 +1,4 @@
-# @jhwelch/eslint-config
+# @jhwelch/mmm-eslint-config
 
 This is an ESLint config for [MagicMirror²](https://github.com/MichMich/MagicMirror/) Modules.
 
