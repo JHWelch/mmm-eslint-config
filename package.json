@@ -20,12 +20,12 @@
   "homepage": "https://github.com/JHWelch/mmm-eslint-config#readme",
   "dependencies": {
     "@eslint/js": "^9.15.0",
-    "@stylistic/eslint-plugin-js": "^2.10.1"
+    "@stylistic/eslint-plugin-js": "^4.4.1"
   },
   "peerDependencies": {
     "eslint": ">= 9"
   },
   "devDependencies": {
-    "eslint": "9.14.0"
+    "eslint": "9.37.0"
   }
 }
