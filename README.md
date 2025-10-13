@@ -1,5 +1,7 @@
 # @jhwelch/mmm-eslint-config
 
+[![Publish to NPM](https://github.com/JHWelch/mmm-eslint-config/actions/workflows/publish.yml/badge.svg)](https://github.com/JHWelch/mmm-eslint-config/actions/workflows/publish.yml)
+
 This is an ESLint config for [MagicMirror²](https://github.com/MichMich/MagicMirror/) Modules.
 
 ## Installation
