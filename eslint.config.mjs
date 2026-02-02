@@ -4,9 +4,11 @@ import stylistic from '@stylistic/eslint-plugin';
 
 export default [
   {files: ['**/*.js'], languageOptions: {sourceType: 'commonjs'}},
+  {files: ['**/*.mjs'], languageOptions: {sourceType: 'module'}},
   {languageOptions: { globals: globals.browser }},
   pluginJs.configs.recommended,
   {
+    files: ['**/*.js', '**/*.mjs'],
     languageOptions: {
       globals: {
         ...globals.jest,
